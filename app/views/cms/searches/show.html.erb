@@ -1,0 +1,39 @@
+<div class="pageheader">
+  <h2><i class="fa fa-list"></i> Post <span>search result</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="table-responsive">
+    <table class="table table-dark table-striped mb30">
+      <thead>
+        <tr>
+          <th><%= brac_t 'post.category' %></th>
+          <th><%= brac_t 'post.title' %></th>
+          <th><%= brac_t 'post.published_at' %></th>
+          <th><%= brac_t 'post.displayed_setting' %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.category.name %></td>
+          <td><%= post.title %></td>
+          <td><%= brac_datetime post.published_at %></td>
+          <td>
+            <%= content_tag :span, brac_t('post.popular'), class: 'label label-primary' if post.displayed_in_popular? %>
+            <%= content_tag :span, brac_t('post.carousel'), class: 'label label-success' if post.displayed_in_carousel? %>
+            <%= content_tag :span, brac_t('post.recommended'), class: 'label label-info' if post.displayed_in_recommended? %>
+          </td>
+          <td class="table-action">
+            <%= link_to raw('<i class="fa fa-file-text-o"></i>'), [:cms, post] %>
+            <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_cms_post_path(post) %>
+            <%= link_to raw('<i class="fa fa-trash-o"></i>'), trash_cms_post_path(post, page: params[:page]), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= brac_paginate @posts %>
+</div>
