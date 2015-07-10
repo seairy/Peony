@@ -7,8 +7,8 @@ set :repo_url, 'git@github.com:seairy/Peony.git'
 
 set :keep_releases, 3
 
-set :linked_files, %w{config/database.yml config/settings.yml config/secrets.yml}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system public/abstract_images}
+set :linked_files, %w{config/database.yml config/secrets.yml}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system}
 
 set :use_sudo, false
 
