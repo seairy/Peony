@@ -5,7 +5,7 @@ set :rvm_type, :user
 set :rvm_ruby_version, '2.1.0'
 set :deploy_user, 'deploy'
 
-server '123.57.157.161', user: 'deploy', roles: %w{web app db}
+server '60.247.115.37', port: 3030, user: 'deploy', roles: %w{web app db}
 
-set :deploy_to, "/srv/www/PeonyStaging"
+set :deploy_to, "/srv/www/Peony"
 set :rails_env, :production
